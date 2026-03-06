@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keystroke Dynamics Research</title>
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.12/lib/codemirror.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.12/theme/dracula.css" />
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.12/lib/codemirror.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.12/mode/python/python.js"></script>
+
+  <!-- p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+  <!-- Pyodide -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="center-text" id="title">Keystroke Dynamics Research</h1>
+
+ <!-- Introduction -->
+    <div id="introduction" class="introduction">
+      <p id="introduction-text">
+        Traditional plagiarism detection tools, which primarily rely on direct comparisons between a user’s input and existing sources, often struggle to identify more sophisticated forms of cheating, such as extensive paraphrasing or the use of external assistance, including generative AI or other individuals.
+      </p>
+      <p id="objective-text">
+        Thus, this study aims to address academic dishonesty in coding by analyzing typing patterns and examining the differences in typing dynamics when individuals code and code trace compared to when they refer to or copy responses from ChatGPT. These differences are characterized by variations in thinking time, typing speed, and the frequency of editing actions during the programming and code tracing process.
+      </p>
+
+      <p><strong id="data-collection-process">Data Collection Process:</strong></p>
+
+      <p id="data-collection-description">There are four different sessions for collecting data. In each session, participants will respond to six Python coding exercises, which are designed to invoke various cognitive load levels.</p>
+<p><strong id="session-number" style="color: black">You are currently on Bonafide Coding Session 1.</strong> <br><br>In this session, participants need to generate responses to each exercise independently, without any external assistance.</p>
+      
+      <p><strong id="evaluation-criteria">Evaluation Criteria:</strong></p>
+      <p id="evaluation-description">Upon submission, participant responses will be evaluated based on several criteria:</p>
+      <ul id="evaluation-criteria-list">
+        <li id="grammatical-accuracy"><strong>Correctness</strong></li>
+        <li id="relevance"><strong>Readability and clarity</strong></li>
+        <li id="length"><strong>Maintainability</strong></li>
+      </ul>
+      <p id="violation-note"></p>
+      <button id="participateButton" class="btn center-text">Participate</button>
+    </div>
+
+    <!-- User Information Form -->
+    <div id="user-info-form" class="centered-form" style="display: none;">
+      <h2 class="center-text" id="user-info-title">
+        Please provide your information to proceed:
+      </h2>
+
+      <form id="userInfoForm" class="form-center">
+        <div class="form-group">
+          <label id="gender-label">Gender:<span class="required">*</span></label>
+          <br />
+          <input type="radio" name="gender" id="male" value="Male" required />
+          <label id="male-label" for="male">Male</label>
+
+          <input type="radio" name="gender" id="female" value="Female" required />
+          <label id="female-label" for="female">Female</label>
+
+          <input type="radio" name="gender" id="other" value="Other" required />
+          <label id="other-label" for="other">Other</label>
+        </div>
+
+        <div class="form-group">
+          <label id="age-label">Age:<span class="required">*</span></label>
+          <br />
+          <input type="number" id="age" name="age" required />
+        </div>
+
+        <div class="form-group">
+          <label id="handedness-label">Handedness:<span class="required">*</span></label>
+          <br />
+          <input type="radio" id="right-handed" name="handedness" value="Right-handed" />
+          <label id="right-handed-label">Right-handed</label>
+
+          <input type="radio" id="left-handed" name="handedness" value="Left-handed" />
+          <label id="left-handed-label">Left-handed</label>
+        </div>
+
+        <button type="submit" id="proceed-button" class="btn center-text">
+          Proceed to Questions
+        </button>
+      </form>
+
+      <div id="error-message" class="error-message"></div>
+    </div>
+
+    <form id="dataForm">
+      <input type="hidden" id="keystrokes" name="keystrokes" />
+    </form>
+
+    <!-- Questions container -->
+    <div id="container" style="display: none;"></div>
+  </div>
+
+  <!-- External JS -->
+  <script>window.FORCED_SESSION = 1;</script>
+  <script src="script.js"></script>
+</body>
+</html>
