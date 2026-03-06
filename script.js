@@ -867,9 +867,11 @@ function hideAlert() {
 
 // Function to hide the language selection dropdown
 function hideLanguageSelection() {
-  document.getElementById('language-selection').style.display = 'none';
+  const el = document.getElementById('language-selection');
+  if (el) {
+    el.style.display = 'none';
+  }
 }
-
 // Event listener for the "Participate" button to include hiding the language selection
 // Because script.js loads at the end of body in index.html, the element should exist; still attach safely on DOMContentLoaded
 function attachParticipateHandler() {
