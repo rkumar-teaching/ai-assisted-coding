@@ -341,7 +341,7 @@ function startSession() {
   hideAlert(); // Hide alert message when starting the session
   let container = document.getElementById('container');
   container.style.display = 'block';
-  document.querySelector('.introduction').style.display = 'none';
+  document.getElementById('introduction').style.display = 'none';
   
   // Hide user info form
   document.getElementById('user-info-form').style.display = 'none';
