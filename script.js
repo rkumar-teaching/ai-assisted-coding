@@ -610,13 +610,12 @@ wrapper.addEventListener("cut",   e => e.preventDefault());
   });
 
   // Add keystroke logging for Session 1
-  editor.on("keydown", (instance, e) => {
-  if ((e.ctrlKey || e.metaKey) && ["c","v","x"].includes(e.key.toLowerCase())) {
-    e.preventDefault();
-    return false;
-  }
-  logKeystroke(e);
-});
+editor.on("keydown", (instance, e) => {
+    logKeystroke(e);
+  });
+  editor.on("keyup", (instance, e) => {
+    logKeystroke(e);
+  });
 
   // ---- Run button + output ----
   // ---- Output + Run/Stop controls ----
@@ -651,6 +650,7 @@ explanationBox.addEventListener("cut", (e) => e.preventDefault());
 
 // Keystroke logging
 explanationBox.addEventListener("keydown", logKeystroke);
+explanationBox.addEventListener("keyup", logKeystroke);
 
 // Store separately from code inputs
 inputs.push({
