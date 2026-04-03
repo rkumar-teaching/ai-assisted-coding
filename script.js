@@ -522,6 +522,14 @@ function renderQuestions(container, questions, twoInputs = false) {
 }
           try { logKeystroke(e); } catch (err) { /* non-fatal */ }
         });
+        editor1.on('keyup', (instance, e) => {
+          // e is a DOM event; pass it for keystroke logging
+          if ((e.ctrlKey || e.metaKey) && ["c","v","x"].includes(e.key.toLowerCase())) {
+  e.preventDefault();
+  return false;
+}
+          try { logKeystroke(e); } catch (err) { /* non-fatal */ }
+        });
 
 
       // --------- Run button & output for editor1 ---------
@@ -557,6 +565,13 @@ attachRunStopControls(editor1, output1, leftDiv);
         updateWordCountEditor(editor2, wordCountDiv);
       });
       editor2.on('keydown', (instance, e) => {
+        if ((e.ctrlKey || e.metaKey) && ["c","v","x"].includes(e.key.toLowerCase())) {
+  e.preventDefault();
+  return false;
+}  
+        try { logKeystroke(e); } catch (err) { /* non-fatal */ }
+          });
+      editor2.on('keyup', (instance, e) => {
         if ((e.ctrlKey || e.metaKey) && ["c","v","x"].includes(e.key.toLowerCase())) {
   e.preventDefault();
   return false;
