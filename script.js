@@ -563,13 +563,6 @@ attachRunStopControls(editor1, output1, leftDiv);
 }  
         try { logKeystroke(e); } catch (err) { /* non-fatal */ }
           });
-      editor2.on('keyup', (instance, e) => {
-        if ((e.ctrlKey || e.metaKey) && ["c","v","x"].includes(e.key.toLowerCase())) {
-  e.preventDefault();
-  return false;
-}  
-        try { logKeystroke(e); } catch (err) { /* non-fatal */ }
-          });
 
       // --------- Run button & output for editor2 ---------
       const output2 = document.createElement('pre');
@@ -596,7 +589,13 @@ attachRunStopControls(editor2, output2, rightDiv);
     indentUnit: 4,
     smartIndent: true,
   });
-
+  editor2.on('keyup', (instance, e) => {
+        if ((e.ctrlKey || e.metaKey) && ["c","v","x"].includes(e.key.toLowerCase())) {
+  e.preventDefault();
+  return false;
+}  
+        try { logKeystroke(e); } catch (err) { /* non-fatal */ }
+          });
   const inputEl = editor.getInputField();
     inputEl.addEventListener('keyup', (e) => {
       try { logKeystroke(e); } catch (err) {}
